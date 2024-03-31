@@ -29,7 +29,6 @@ markdown2==2.4.9
 matplotlib-inline==0.1.6
 multidict==6.0.4
 nest-asyncio==1.6.0
-numpy==1.25.0
 openai==0.27.8
 outcome==1.2.0
 packaging==23.1
