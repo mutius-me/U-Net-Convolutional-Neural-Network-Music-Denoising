@@ -6,9 +6,9 @@ import argparse
 from . import check_attributes
 
 
-def create_spectrogram(file, start_time=0.0, duration=None):
+def display_spectrogram(file, start_time=0.0, duration=None):
     """
-    Creates a spectrogram for a segment of an audio file.
+    Creates a mel-spectrogram for a segment of an audio file, and plots and displays it.
     
     Parameters:
     - file: Path to the audio file.
@@ -18,31 +18,19 @@ def create_spectrogram(file, start_time=0.0, duration=None):
     # Load the audio file (or a segment of it)
     y, sr = librosa.load(file, offset=start_time, duration=duration)
 
-    # # Create a spectrogram
-    # S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128, fmax=8000)
+    # Create a spectrogram
+    S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128, fmax=8000)
 
-    # # Convert to log scale (dB)
-    # S_dB = librosa.power_to_db(S, ref=np.max)
+    # Convert to log scale (dB)
+    S_dB = librosa.power_to_db(S, ref=np.max)
 
-    # # Plot the spectrogram
-    # plt.figure(figsize=(10, 4))
-    # librosa.display.specshow(S_dB, sr=sr, x_axis='time', y_axis='mel', fmax=8000)
-    # plt.colorbar(format='%+2.0f dB')
-    # plt.title('Mel-frequency spectrogram')
-    # plt.tight_layout()
-    # plt.show()
-
-    # Generate the spectrogram
-    S = librosa.stft(y)
-    S_magnitude = np.abs(S)
-
-    # Convert to decibels
-    S_dB = librosa.amplitude_to_db(S_magnitude, ref=np.max)
-
-    # Print a small portion of the spectrogram data
-    print(S_dB[:, :4])  # Printing the first four columns for illustration
-
-
+    # Plot the spectrogram
+    plt.figure(figsize=(10, 4))
+    librosa.display.specshow(S_dB, sr=sr, x_axis='time', y_axis='mel', fmax=8000)
+    plt.colorbar(format='%+2.0f dB')
+    plt.title('Mel-frequency spectrogram')
+    plt.tight_layout()
+    plt.show()
     
 
 piano_path = None
@@ -67,7 +55,7 @@ file_name = 'clean_001.wav'
 # 60 Hz + piano
 dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/combinations'
 file_name = '/60hz+piano.wav'
-# piano_path = '/Users/Leo/Developer/local/senior-project/dataset/practice/instruments/piano-v1/clean_001.wav'
+piano_path = '/Users/Leo/Developer/local/senior-project/dataset/practice/instruments/piano-v1/clean_001.wav'
 
 full_path = dir_name + '/' + file_name
 
@@ -81,16 +69,16 @@ if __name__ == "__main__":
 
     if args.path:
         if args.duration and args.start:
-            create_spectrogram(args.path, duration=args.duration, start=args.start)
+            display_spectrogram(args.path, duration=args.duration, start=args.start)
         elif args.duration and not args.start:
-            create_spectrogram(args.path, duration=args.duration)
+            display_spectrogram(args.path, duration=args.duration)
         elif not args.duration and args.start:
-            create_spectrogram(args.path, start=args.start)
+            display_spectrogram(args.path, start=args.start)
         else:
-            create_spectrogram(args.path)
+            display_spectrogram(args.path)
     else:
         # Use default file
         if piano_path:
-            create_spectrogram(full_path, start_time=0, duration=check_attributes.get_audio_length(piano_path))
+            display_spectrogram(full_path, start_time=0, duration=check_attributes.get_audio_length(piano_path))
         else: 
-            create_spectrogram(full_path)
+            display_spectrogram(full_path)
