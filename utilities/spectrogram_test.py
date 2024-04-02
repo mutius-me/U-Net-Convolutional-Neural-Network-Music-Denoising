@@ -5,7 +5,11 @@ import numpy as np
 import soundfile as sf 
 import argparse
 
-def create_spectrogram(file_path, spectrogram_type='stft', start_time=0.0, duration=None):
+DEFAULT_INPUT_DIR = "/Users/Leo/Developer/local/senior-project/dataset/practice/instruments/piano-v1"
+DEFAULT_INPUT_FILE = 'clean_001.wav'
+DEFAULT_OUTPUT_DIR = DEFAULT_INPUT_DIR ## Change this if needed
+
+def create_spectrogram(file_path, spectrogram_type='stft', start_time=0.0, duration=None, plot=False):
     """
     Generates and plots a spectrogram (STFT, Mel, or CQT) for an audio file.
     
@@ -25,17 +29,20 @@ def create_spectrogram(file_path, spectrogram_type='stft', start_time=0.0, durat
         S = np.abs(librosa.cqt(y, sr=sr))
         S_dB = librosa.amplitude_to_db(S, ref=np.max)
         axis_type = 'cqt_hz'
-    else:  # Default to 'stft'
+    elif spectrogram_type == 'stft':
         S = librosa.stft(y)
         S_dB = librosa.amplitude_to_db(np.abs(S), ref=np.max)
         axis_type = 'log'
+    else:
+        raise ValueError("Unsupported spectrogram type '" + spectrogram_type + "'.")
     
-    plt.figure(figsize=(10, 4))
-    librosa.display.specshow(S_dB, sr=sr, x_axis='time', y_axis=axis_type)
-    plt.colorbar(format='%+2.0f dB')
-    plt.title(f'{spectrogram_type.capitalize()}-frequency spectrogram')
-    plt.tight_layout()
-    plt.show()
+    if plot:
+        plt.figure(figsize=(10, 4))
+        librosa.display.specshow(S_dB, sr=sr, x_axis='time', y_axis=axis_type)
+        plt.colorbar(format='%+2.0f dB')
+        plt.title(f'{spectrogram_type.capitalize()}-frequency spectrogram')
+        plt.tight_layout()
+        plt.show()
 
     return S, sr
 
@@ -70,16 +77,29 @@ def save_audio_to_disk(audio, sr, file_path='output_audio.wav'):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process an audio file to create and convert spectrograms.')
-    parser.add_argument('-p', '--path', type=str, help='Path to the audio file.')
+    parser.add_argument('-ip', '--input', type=str, help='Input path to the audio file.')
     parser.add_argument('-t', '--type', type=str, default='stft', help='Type of spectrogram to generate (stft, mel, cqt).')
     parser.add_argument('-s', '--start', type=float, help='Start time in seconds.', default=0.0)
     parser.add_argument('-d', '--duration', type=float, help='Duration in seconds.')
-    parser.add_argument('-o', '--output', type=str, help='Output path for the audio file.', default='output_audio.wav')
+    parser.add_argument('-op', '--output', type=str, help='Output path for the audio file.', default='output_audio.wav')
+    parser.add_argument('-p', '--plot', action='store_true', help='Indicates that the spectrogram should be plotted using matplotlib.')
 
     args = parser.parse_args()
 
+    input = args.input if args.input else (DEFAULT_INPUT_DIR + '/' + DEFAULT_INPUT_FILE)
+    spectrogram_type = args.type if args.type else 'stft'
+    start_time = args.start if args.start else 0.0
+    duration = args.duration if args.duration else None
+    output = args.output if args.output else DEFAULT_OUTPUT_DIR
+    plot = args.plot if args.plot else False
+
+
+
     # Generate spectrogram
-    S, sr = create_spectrogram(args.path, spectrogram_type=args.type, start_time=args.start, duration=args.duration)
+    S, sr = create_spectrogram(input, spectrogram_type, start_time, duration, plot)
     
     # Convert back to audio
-    audio = convert_spectrogram_to_audio(S, sr, spectro
+    audio = convert_spectrogram_to_audio(S, sr, spectrogram_type=args.type)
+    
+    # Save the audio to disk
+    save_audio_to_disk(audio, sr, output)
