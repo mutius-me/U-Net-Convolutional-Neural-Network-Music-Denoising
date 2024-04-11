@@ -167,3 +167,8 @@ myenv/*
 
 # Dataset
 dataset*
+
+# Stray audiofiles in utilities directory
+utilities/*.wav
+utilities/*.wav
+
