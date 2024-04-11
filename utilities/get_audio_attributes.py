@@ -1,14 +1,19 @@
+##############################################################################
+# NAME: check_attributes.py
+# DESCRIPTION: A flexible module used to check the attributes of sound files.
+###############################################################################
+
 import argparse
 import wave
 from pydub import AudioSegment
-import librosa  # Import librosa for audio analysis
+import librosa 
 
 # Dictionaries with sample paths
 wav_samples = {
-    "NSynth": "/Users/Leo/Developer/local/senior-project/dataset/practice/guitar_acoustic_001-060-127.wav",
+    # "NSynth": "/Users/Leo/Developer/local/senior-project/dataset/practice/guitar_acoustic_001-060-127.wav",
 }
 mp3_samples = {
-    "Philharmonia": "/Users/Leo/Downloads/all-samples/cello/cello_Gs5_05_forte_arco-normal.mp3",
+    "Philharmonia": "/Users/Leo/Developer/local/senior-project/dataset/raw/philharmonia/cello/cello_Gs5_05_forte_arco-normal.mp3",
 }
 
 def get_audio_length(file_path):

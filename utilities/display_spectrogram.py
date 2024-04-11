@@ -1,6 +1,7 @@
 ##############################################################################
 # NAME: display_spectrogram.py
-# DESCRIPTION: A module used to display a spectrogram for a sound file.
+# DESCRIPTION: A module used to visually display a spectrogram for a sound 
+# file.
 ###############################################################################
 
 import librosa
@@ -8,7 +9,9 @@ import librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
 import argparse
-from . import check_attributes
+# from . import get_audio_attributes ##TODO: fix this relative import issue
+from pydub import AudioSegment ##TODO remove this import once relative import issue is resolved
+
 
 
 def display_spectrogram(file, start_time=0.0, duration=None):
@@ -36,17 +39,22 @@ def display_spectrogram(file, start_time=0.0, duration=None):
     plt.title('Mel-frequency spectrogram')
     plt.tight_layout()
     plt.show()
-    
 
+
+## TODO: Delete and fix import
+def get_audio_length(file_path):
+    audio = AudioSegment.from_file(file_path)
+    return len(audio) / 1000.0
 
 #*######################*#
 #*PREVIOUSLY-USED INPUTS*#
 #*######################*# 
 
+piano_path = None
 
 ## Piano
-dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/instruments/piano-v1'
-file_name = 'clean_001.wav'
+# dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/instruments/piano-v1'
+# file_name = 'clean_001.wav'
 
 # AC Unit
 # dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/noise/real-life'
@@ -58,13 +66,13 @@ file_name = 'clean_001.wav'
         
 ## 60 Hz
 # Obs.: weird spike at aroudn 6 seconds; start at 7 for clean
-# dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/noise/60-hz'
-# file_name = '001.mp3'
+dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/noise/60-hz'
+file_name = '001.mp3'
 
 # Piano + 60 Hz
-dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/combinations'
-file_name = '/60hz+piano.wav'
-piano_path = '/Users/Leo/Developer/local/senior-project/dataset/practice/instruments/piano-v1/clean_001.wav'
+# dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/combinations'
+# file_name = '/60hz+piano.wav'
+# piano_path = '/Users/Leo/Developer/local/senior-project/dataset/practice/instruments/piano-v1/clean_001.wav'
 
 full_path = dir_name + '/' + file_name
 
@@ -88,6 +96,7 @@ if __name__ == "__main__":
     else:
         # Use default file
         if piano_path:
-            display_spectrogram(full_path, start_time=0, duration=check_attributes.get_audio_length(piano_path))
+            # display_spectrogram(full_path, start_time=0, duration=get_audio_attributes.get_audio_length(piano_path))
+            display_spectrogram(full_path, start_time=0, duration=get_audio_length(piano_path)) ##TODO replace this with line above
         else: 
             display_spectrogram(full_path)
