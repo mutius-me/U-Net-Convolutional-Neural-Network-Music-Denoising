@@ -1,7 +1,7 @@
 ##############################################################################
-# NAME: get_dataset_metadata.py
-# DESCRIPTION: A module with various functions to get metadata about a
-# dataset, including both MP3 and WAV file processing.
+# NAME: get_length_metadata.py
+# DESCRIPTION: A module with various functions to get metadata about length in
+# a dataset, including both MP3 and WAV file processing.
 ###############################################################################
 
 import os
