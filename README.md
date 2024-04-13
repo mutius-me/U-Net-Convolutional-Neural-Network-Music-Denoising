@@ -8,12 +8,12 @@ These instructions will get your copy of the project up and running on your loca
 
 ### Prerequisites
 
-What things you need to install the software and how to install them. For example:
+This project has been tested using the prerequisites listed below. It is possible, but not recommended, to attempt to use this project with 
 
 
 
 ```
-Python 3.9 or higher Anaconda (optional, but recommended for managing environments)
+Python 3.12.2 or higher
 ```
 
 
@@ -60,7 +60,7 @@ myenv\Scripts\activate
 
 ### Installing Dependencies
 
-Install all dependencies using the requirements.txt file:
+Install all dependencies using the requirements.txt file, which is located in `setup` subdirectory of the root directory.
 
 ```
 pip install -r requirements.txt
@@ -84,7 +84,7 @@ When you're done, you can deactivate the virtual environment by simply running:
 deactivate
 ```
 
-(If using Anaconda, use `conda deactivate` to exit the base environment.)
+
 
 ## Contributing
 
@@ -96,16 +96,27 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Your Name** - *Initial work* - [YourUsername](LINK_TO_YOUR_GITHUB_PROFILE)
+* **Leonardo von Mutius** - *Creator* - [YourUsername](LINK_TO_YOUR_GITHUB_PROFILE)
 
 See also the list of [contributors](LINK_TO_YOUR_PROJECT_CONTRIBUTORS) who participated in this project.
+
+
 
 ## License
 
 This project is licensed under the XYZ License - see the [LICENSE.md](LICENSE.md) file for details
 
+
+
+## Bibliography
+
+- Clean audio samples obtained from the **Philharmonia Orchestra Sound Sample Library**
+- Stochastic noise generation obtained from Stéphane Pigeon's [myNoise](mynoise.net).
+- See requirements.txt for extensive list of packages used
+
+
+
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Dr. Scott E. Petersen, my project advisor
+* Nicole Cosme-Clifford, my project advisor, and brilliant connoisseur of the audio machine learning world
