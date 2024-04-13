@@ -1,6 +1,10 @@
 ##############################################################################
 # NAME: stft_pipeline_testing.py
-# DESCRIPTION: A flexible module used to check the attributes of sound files.
+# DESCRIPTION: A script to test whether the audio-spectrogram pipeline works.
+# In this script, an audio file is converted into a STFT spectrogram, then
+# converted back into an audio file.
+#
+# The outcome of this test showed that the pipeline is sound. 
 ###############################################################################
 
 import librosa

@@ -118,16 +118,24 @@ def analyze_lengths(lengths, sd_count=4):
 
 
 def process_wav_files(root_dir):
-    """Process WAV files to calculate and analyze their lengths."""
+    """Process WAV files to calculate and analyze their lengths, and calculate the total duration."""
     wav_files = find_wav_files(root_dir)
     lengths = [calculate_wav_length(file) for file in wav_files]
+    total_duration = sum(lengths)  # Calculate the total duration of all WAV files
+
+    # Print the total duration
+    print(f"Total duration of all WAV files: {total_duration:.2f} seconds")
+    
+    # Proceed with analysis
     analyze_lengths(lengths)
+    
 
 if __name__ == "__main__":
     # Example usage: Adjust the root_dir variable to point to your directory
     root_dir = "/Users/Leo/Developer/local/senior-project/dataset/raw/philharmonia-wav"  # Replace with the actual path
     # Uncomment the line below to process WAV files
     process_wav_files(root_dir)
+
     
     # Example for MP3 files processing
     # path = '/path/to/your/music/directory'  # Replace with the actual path

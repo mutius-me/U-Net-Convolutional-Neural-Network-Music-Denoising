@@ -1,3 +1,23 @@
+##############################################################################
+# NAME: batch-generate-spectrograms.py
+# DESCRIPTION: Batch generates spectrograms from an input directory and saves 
+# them into an output directory. The directory tree is specified using 
+# relative paths to ensure code portability. 
+#
+# #TODO: adjust this to the actual structure of the directory
+# The script assumes the following directory structure:
+# root
+#   --> utilities
+#      --> this script
+#   --> dataset
+#      --> clean
+#         --> sounds
+#         --> spectrograms
+#      --> noisy
+#         --> sounds
+#         --> spectrograms
+#
+
 import librosa
 import numpy as np
 import os
@@ -7,8 +27,8 @@ import argparse
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))  # Directory of this script
 BASE_DIR = os.path.dirname(SCRIPT_DIR)  # Adjust based on actual project structure
 
-DEFAULT_INPUT_PATH = os.path.join(BASE_DIR, "Dataset")
-DEFAULT_OUTPUT_PATH = os.path.join(BASE_DIR, "Dataset")
+DEFAULT_INPUT_PATH = os.path.join(BASE_DIR, "dataset") ##TODO adjust structure as needed
+DEFAULT_OUTPUT_PATH = os.path.join(BASE_DIR, "dataset") ##TODO adjust structure as needed
 PLOT_FLAG = False
 DEFAULT_SPECTROGRAM_TYPE = 'stft'
 
@@ -20,7 +40,7 @@ def create_spectrograms_from_directory(input_dir, output_dir, spectrogram_type=D
         os.makedirs(spectrogram_dir, exist_ok=True)
 
         # Supporting different audio file types
-        supported_extensions = ['*.wav', '*.mp3', '*.flac', '*.ogg']  # Add or remove as needed
+        supported_extensions = ['*.wav', '*.mp3', '*.flac', '*.ogg']  # Add or remove as needed ##TODO use only .wav
         for extension in supported_extensions:
             for file_path in glob.glob(os.path.join(sound_dir, extension)):
                 if not os.path.isfile(file_path):

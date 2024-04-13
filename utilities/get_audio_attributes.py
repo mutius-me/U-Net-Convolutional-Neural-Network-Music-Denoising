@@ -1,6 +1,6 @@
 ##############################################################################
 # NAME: check_attributes.py
-# DESCRIPTION: A flexible module used to check the attributes of sound files.
+# DESCRIPTION: A flexible module used to check the attributes of individualsound files.
 ###############################################################################
 
 import argparse
