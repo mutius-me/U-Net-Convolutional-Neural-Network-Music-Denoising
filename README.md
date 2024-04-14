@@ -1,20 +1,18 @@
-# Senior Project
+# README: U-Net Denoising Model
 
-Describe your project here. A brief description of what it does and who it's for.
+A Senior Project presented to the faculty of the Department of Computer Science of Yale University In candidacy for the degree of Bachelor of Arts in Computing & the Arts.
+
+
 
 ## Getting Started
 
 These instructions will get your copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
+### System & software requirements
 
-This project has been tested using the prerequisites listed below. It is possible, but not recommended, to attempt to use this project with 
+This project has been tested only using the prerequisites listed below. 
 
-
-
-```
-Python 3.12.2 or higher
-```
+- Python 3.12.2 or higher
 
 
 
@@ -42,15 +40,11 @@ python -m venv myenv
 
 For Unix/macOS:
 
-source myenv/bin/activate
-
 ```
 source myenv/bin/activate
 ```
 
 For Windows:
-
-myenv\Scripts\activate
 
 ```
 myenv\Scripts\activate
@@ -63,10 +57,8 @@ myenv\Scripts\activate
 Install all dependencies using the requirements.txt file, which is located in `setup` subdirectory of the root directory.
 
 ```
-pip install -r requirements.txt
+cd setup && pip install -r requirements.txt
 ```
-
-
 
 ### Running the Application
 
