@@ -82,7 +82,7 @@ def analyze_lengths(lengths, sd_count=4):
     print(f"Min length: {min_length:.2f} seconds")
     print(f"Range: {range_length:.2f} seconds")
     print(f"Mode: {mode_length[0]:.2f} seconds, {mode_length[1]} instances")
-    print(f"Total files: {total_files} seconds\n")
+    print(f"Total files: {total_files} files\n")
 
     # Count files more than 4 standard deviations below the mean (if any are > 0 seconds)
     min_length = mean_length - sd_count * std_dev
@@ -131,9 +131,8 @@ def process_wav_files(root_dir):
     
 
 if __name__ == "__main__":
-    # Example usage: Adjust the root_dir variable to point to your directory
-    root_dir = "/Users/Leo/Developer/local/senior-project/dataset/raw/philharmonia-wav"  # Replace with the actual path
-    # Uncomment the line below to process WAV files
+    # Uncomment for WAV files processing
+    root_dir = "saxophone_Gs5_long_forte_major-trill.wav"  # Replace with the actual path
     process_wav_files(root_dir)
 
     

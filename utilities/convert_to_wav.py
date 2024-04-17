@@ -31,8 +31,8 @@ def convert_audio_to_wav(source_dir, target_dir, log_file):
 def main():
     parser = argparse.ArgumentParser(description="Convert .mp3 and .m4a files to .wav format.")
     # Changed to optional arguments
-    parser.add_argument("--source_dir", default="./", help="Source directory containing the audio files to convert.")
-    parser.add_argument("--target_dir", default="./target", help="Target directory where the converted .wav files will be saved.")
+    parser.add_argument("--source_dir", default="/Users/Leo/Developer/Local/senior-project/dataset/raw/data/mynoise-samples/not-animated/m4a", help="Source directory containing the audio files to convert.")
+    parser.add_argument("--target_dir", default="/Users/Leo/Developer/Local/senior-project/dataset/raw/data/mynoise-samples/not-animated/wav", help="Target directory where the converted .wav files will be saved.")
     parser.add_argument("--log_file", default="failed-conversion-files.txt", help="Path to the log file for failed conversions.")
 
     args = parser.parse_args()

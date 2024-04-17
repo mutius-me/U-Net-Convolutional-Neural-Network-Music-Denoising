@@ -27,11 +27,11 @@ def mix_audio(clean_file_path, noise_dir, output_dir, mixing_ratio=0.75):
 
     # Mix the audio files
     mixed_audio = mixing_ratio * clean_audio + (1 - mixing_ratio) * noise_audio
-    mixed_audio = mixed_audio / np.max(np.abs(mixed_audio))  # Normalize
+    # mixed_audio = mixed_audio / np.max(np.abs(mixed_audio))  # Normalize
 
     # Save the mixed audio file
     base_clean_filename = os.path.basename(clean_file_path)
-    output_file_path = os.path.join(output_dir, f"mixed_{base_clean_filename}")
+    output_file_path = os.path.join(output_dir, f"{os.path.splitext(base_clean_filename)[0]}_mixed{os.path.splitext(base_clean_filename)[1]}")
     sf.write(output_file_path, mixed_audio, sr)
 
 def process_directory(clean_dir, noise_dir, output_dir):
@@ -43,9 +43,14 @@ def process_directory(clean_dir, noise_dir, output_dir):
                 mix_audio(clean_file_path, noise_dir, output_dir)
 
 # Example usage
-clean_dir = '/Users/Leo/Developer/Local/senior-project/dataset/raw/philharmonia-wav/flute'
-noise_dir = '/Users/Leo/Developer/Local/senior-project/dataset/raw/noise-samples/not-animated/wav/'
+clean_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio'
+noise_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/noise/audio/pre-processed/sc3'
 
-output_dir = '/Users/Leo/Developer/Local/senior-project/dataset/practice/combinations/attempt-1'
+output_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio'
 
-process_directory(clean_dir, noise_dir, output_dir)
+instruments = ['flute', 'oboe', 'clarinet', 'saxophone', 'cor anglais']
+
+for instrument in instruments:
+    clean_dir = clean_dir + '/' + instrument
+    output_dir = output_dir + '/' + instrument
+    process_directory(clean_dir, noise_dir, output_dir)

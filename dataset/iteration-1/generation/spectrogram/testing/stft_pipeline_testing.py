@@ -13,11 +13,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import soundfile as sf
 import argparse
+import os
 
-DEFAULT_INPUT_DIR = "/Users/Leo/Developer/local/senior-project/dataset/raw/philharmonia/cello"
+DEFAULT_INPUT_DIR = "/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio/flute"
 DEFAULT_INPUT_FILE = 'cello_C2_phrase_mezzo-forte_arco-col-legno-tratto.mp3'
 DEFAULT_OUTPUT_DIR = "/Users/Leo/Developer/Local/senior-project/utilities"
 DEFAULT_OUTPUT_FILE = DEFAULT_INPUT_FILE[0:-4] + "_reconstructed" + DEFAULT_INPUT_FILE[-4:]
+DEFAULT_SPECTROGRAM_DIR = "___"
 
 def create_spectrogram(file_path, start_time=0.0, duration=None, plot=False):
     """
@@ -79,6 +81,36 @@ def save_audio_to_disk(audio, sr, file_path):
     - file_path: Path to save the audio file.
     """
     sf.write(file_path, audio.T, sr)  # Transpose the array to fit soundfile's format
+
+def save_spectrogram_to_disk(spectrogram, save_dir, file_name):
+    np.save(os.path.join(save_dir, file_name), spectrogram)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Process an audio file to create and convert STFT spectrograms.')
+    parser.add_argument('-ip', '--input', type=str, default=DEFAULT_INPUT_DIR + '/' + DEFAULT_INPUT_FILE, help='Input path to the audio file.')
+    parser.add_argument('-s', '--start', type=float, default=0.0, help='Start time in seconds.')
+    parser.add_argument('-d', '--duration', type=float, help='Duration in seconds.')
+    parser.add_argument('-op', '--output', type=str, default=DEFAULT_OUTPUT_DIR + '/' + DEFAULT_OUTPUT_FILE, help='Output path for the audio file.')
+    parser.add_argument('-p', '--plot', action='store_true', help='Plot the STFT spectrogram.')
+    parser.add_argument('-save-spec', '--save-spectrogram', action='store_true', help='Save the numpy spectrogram array to disk.')
+
+    args = parser.parse_args()
+
+    # Generate spectrograms for both channels
+    S, sr = create_spectrogram(args.input, args.start, args.duration, args.plot)
+
+    # Convert spectrograms back to stereo audio
+    audio = convert_spectrogram_to_audio(S, sr)
+
+    # Save the stereo audio to disk
+    save_audio_to_disk(audio, sr, args.output)
+
+    # Optionally save the spectrogram to disk
+    if args.save_spectrogram:
+        spectrogram_file_name = os.path.splitext(DEFAULT_INPUT_FILE)[0] + '_spectrogram.npy'
+        save_spectrogram_to_disk(S, DEFAULT_SPECTROGRAM_DIR, spectrogram_file_name)
+
+    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process an audio file to create and convert STFT spectrograms.')

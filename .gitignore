@@ -166,10 +166,14 @@ cython_debug/
 myenv/*
 
 # Dataset
-dataset/raw/*
+dataset/raw/data
 dataset/*/data
 
 # Stray audiofiles in utilities directory
 utilities/*.wav
 utilities/*.wav
 
+
+# Audio files
+*.wav
+*.mp3

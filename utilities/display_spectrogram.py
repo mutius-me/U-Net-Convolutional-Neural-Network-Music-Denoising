@@ -66,37 +66,53 @@ piano_path = None
         
 ## 60 Hz
 # Obs.: weird spike at aroudn 6 seconds; start at 7 for clean
-dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/noise/60-hz'
-file_name = '001.mp3'
+# dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/noise/60-hz'
+# file_name = '001.mp3'
 
 # Piano + 60 Hz
 # dir_name = '/Users/Leo/Developer/local/senior-project/dataset/practice/combinations'
 # file_name = '/60hz+piano.wav'
 # piano_path = '/Users/Leo/Developer/local/senior-project/dataset/practice/instruments/piano-v1/clean_001.wav'
 
-full_path = dir_name + '/' + file_name
+
+# Ground loop
+dir_name = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/noise/audio/raw'
+file_name = "ground-loop.wav"
+
+# semi-random flute sample
+# dir_name = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio/flute'
+# file_name = 'flute_A4_1_forte_normal.wav'
+
+# semi-random sax sample
+# dir_name = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio/saxophone'
+# file_name = 'saxophone_E6_15_piano_normal.wav'
+
+# static
+# dir_name = '/Users/Leo/Developer/Local/senior-project/dataset/raw/data/mynoise-samples/not-animated/wav'
+# file_name = 'static-15m.wav'
+
+
+path = dir_name + '/' + file_name
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate a frequency spectrogram for an audio file.')
     parser.add_argument('-p', '--path', type=str, help='Check length of the audio file')
-    parser.add_argument('-d', '--duration', type=float, help='Specifies duration.')
     parser.add_argument('-s', '--start', type=float, help='Specifies start time.')
+    parser.add_argument('-d', '--duration', type=float, help='Specifies duration.')
+
 
     args = parser.parse_args()
 
+    duration = get_audio_length(path)
+    start = 0.0
+
     if args.path:
-        if args.duration and args.start:
-            display_spectrogram(args.path, duration=args.duration, start=args.start)
-        elif args.duration and not args.start:
-            display_spectrogram(args.path, duration=args.duration)
-        elif not args.duration and args.start:
-            display_spectrogram(args.path, start=args.start)
-        else:
-            display_spectrogram(args.path)
-    else:
-        # Use default file
-        if piano_path:
-            # display_spectrogram(full_path, start_time=0, duration=get_audio_attributes.get_audio_length(piano_path))
-            display_spectrogram(full_path, start_time=0, duration=get_audio_length(piano_path)) ##TODO replace this with line above
-        else: 
-            display_spectrogram(full_path)
+        path = args.path
+
+    if args.start:
+        start = args.start
+
+    if args.duration:
+        duration = args.duration
+
+    display_spectrogram(path, start, duration)

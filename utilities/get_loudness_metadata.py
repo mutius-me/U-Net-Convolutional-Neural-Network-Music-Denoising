@@ -44,14 +44,37 @@ def analyze_audio(directory, print_all_levels=False):
     else:
         print("No .wav files found or processed.")
 
+
+############
+# ATTEMPT 1#
+############
 # Clean flute samples
 # directory = '/Users/Leo/Developer/Local/senior-project/dataset/raw/philharmonia-wav/flute' 
 
-# Unadulterated, non-animated ground loop noise
+# Unadulterated, non-animated ground loop noise from myNoise
 # directory = '/Users/Leo/Developer/Local/senior-project/dataset/raw/noise-samples/not-animated/wav'
 
-# Attempt-1, ground loop injected into flute samples
-directory = '/Users/Leo/Developer/Local/senior-project/dataset/practice/combinations/attempt-1'
+# ground loop injected into flute samples
+# directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/noise/audio/pre-processed/'
+
+############
+# ATTEMPT 2#
+############
+
+# Clean flute samples
+# directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio/flute' 
+
+
+# Ground loop noise generated in SuperCollider
+# directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/noise/audio/raw/sc3/'
+
+# Pre-processed ground loop noise generated in SuperCollider
+directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/noise/audio/pre-processed/sc3/'
+
+
+#Attempt-2, -40db ground loop injected into flute sample
+# directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio/flute'
+
 analyze_audio(directory)
 
 
