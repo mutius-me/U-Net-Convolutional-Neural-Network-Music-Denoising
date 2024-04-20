@@ -11,10 +11,10 @@ import librosa
 
 # Dictionaries with sample paths
 wav_samples = {
-    # "NSynth": "/Users/Leo/Developer/local/senior-project/dataset/practice/guitar_acoustic_001-060-127.wav",
+    "NSynth": "/Users/Leo/Developer/local/senior-project/oboe_As4_15_forte_normal_reconstructed.wav",
 }
 mp3_samples = {
-    "Philharmonia": "/Users/Leo/Developer/local/senior-project/dataset/raw/philharmonia/cello/cello_Gs5_05_forte_arco-normal.mp3",
+    # "Philharmonia": "/Users/Leo/Developer/local/senior-project/dataset/raw/philharmonia/cello/cello_Gs5_05_forte_arco-normal.mp3",
 }
 
 def get_audio_length(file_path):

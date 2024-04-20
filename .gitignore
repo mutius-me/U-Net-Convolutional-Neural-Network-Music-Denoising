@@ -167,13 +167,15 @@ myenv/*
 
 # Dataset
 dataset/raw/data
-dataset/*/data
+dataset/*/data/*/*/*
 
 # Stray audiofiles in utilities directory
 utilities/*.wav
 utilities/*.wav
 
-
 # Audio files
 *.wav
 *.mp3
+
+# Spectrograms
+*.npy

@@ -10,7 +10,7 @@ Linked READMEs: (**TODO: fixed relative path links**)
 
 ### Directory structure
 
-- The `generation` directory stores files relating to dataset generation.
+- The `generation` directory stores files relating to dataset generation, transformation, and manipulation.
 - The `data`  directory stores the audio and spectrogram data used in this iteration.
 
 

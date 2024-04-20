@@ -48,9 +48,10 @@ noise_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/
 
 output_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio'
 
-instruments = ['flute', 'oboe', 'clarinet', 'saxophone', 'cor anglais']
+# instruments = ['flute', 'oboe', 'clarinet', 'saxophone', 'cor anglais']
+instruments = ['clarinet', 'saxophone', 'cor anglais']
 
 for instrument in instruments:
-    clean_dir = clean_dir + '/' + instrument
-    output_dir = output_dir + '/' + instrument
-    process_directory(clean_dir, noise_dir, output_dir)
+    ith_clean_dir = clean_dir + '/' + instrument
+    ith_output_dir = output_dir + '/' + instrument
+    process_directory(ith_clean_dir, noise_dir, ith_output_dir)

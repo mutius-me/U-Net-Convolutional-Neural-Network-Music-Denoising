@@ -70,12 +70,13 @@ def analyze_audio(directory, print_all_levels=False):
 
 # Pre-processed ground loop noise generated in SuperCollider
 directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/noise/audio/pre-processed/sc3/'
+directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/noise/audio/raw/sc3/'
+
 
 
 #Attempt-2, -40db ground loop injected into flute sample
 # directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio/flute'
 
 analyze_audio(directory)
-
 
 

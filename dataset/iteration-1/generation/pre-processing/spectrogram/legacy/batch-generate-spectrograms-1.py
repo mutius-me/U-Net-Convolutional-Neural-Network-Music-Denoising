@@ -24,11 +24,14 @@ import os
 import glob
 import argparse
 
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))  # Directory of this script
 BASE_DIR = os.path.dirname(SCRIPT_DIR)  # Adjust based on actual project structure
 
-DEFAULT_INPUT_PATH = os.path.join(BASE_DIR, "dataset") ##TODO adjust structure as needed
-DEFAULT_OUTPUT_PATH = os.path.join(BASE_DIR, "dataset") ##TODO adjust structure as needed
+# DEFAULT_INPUT_PATH = os.path.join(BASE_DIR, "dataset") ##TODO adjust structure as needed
+# DEFAULT_OUTPUT_PATH = os.path.join(BASE_DIR, "dataset") ##TODO adjust structure as needed
+
+
 PLOT_FLAG = False
 DEFAULT_SPECTROGRAM_TYPE = 'stft'
 

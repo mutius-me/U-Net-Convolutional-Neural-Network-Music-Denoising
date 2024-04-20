@@ -39,7 +39,7 @@ def process_directory(source_dir, target_dir):
                 os.makedirs(target_path, exist_ok=True)
                 process_wav_file(source_path, target_path)
 
-source_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio/flute'
-target_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio-segmented/flute'
+source_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio'
+target_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio-segmented'
 
 process_directory(source_directory, target_directory)

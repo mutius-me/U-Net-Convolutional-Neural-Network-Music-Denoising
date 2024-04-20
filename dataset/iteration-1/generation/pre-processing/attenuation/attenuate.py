@@ -38,6 +38,6 @@ def process_directory(source_dir, target_dir, target_rms):
 # Example usage
 source_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/noise/audio/raw/sc3' #TODO: convert to relative path
 target_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/noise/audio/pre-processed/sc3'
-target_db = -35.0  # Target RMS dB level
+target_db = -30.0  # Target RMS dB level
 
 process_directory(source_directory, target_directory, target_db)

@@ -1,4 +1,4 @@
-##############################################################################
+c##############################################################################
 # NAME: stft_pipeline_testing.py
 # DESCRIPTION: A script to test whether the audio-spectrogram pipeline works.
 # In this script, an audio file is converted into a STFT spectrogram, then
@@ -15,8 +15,8 @@ import soundfile as sf
 import argparse
 import os
 
-DEFAULT_INPUT_DIR = "/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio/flute"
-DEFAULT_INPUT_FILE = 'cello_C2_phrase_mezzo-forte_arco-col-legno-tratto.mp3'
+DEFAULT_INPUT_DIR = "/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio/oboe"
+DEFAULT_INPUT_FILE = 'oboe_As4_15_forte_normal.wav'
 DEFAULT_OUTPUT_DIR = "/Users/Leo/Developer/Local/senior-project/utilities"
 DEFAULT_OUTPUT_FILE = DEFAULT_INPUT_FILE[0:-4] + "_reconstructed" + DEFAULT_INPUT_FILE[-4:]
 DEFAULT_SPECTROGRAM_DIR = "___"
@@ -62,6 +62,7 @@ def convert_spectrogram_to_audio(S_array, sr):
     - S_array: Array of STFT spectrograms for both channels.
     - sr: Sample rate of the original audio.
     """
+    print(sr)
     channels_audio = []
     for S in S_array:
         audio = librosa.istft(S)
