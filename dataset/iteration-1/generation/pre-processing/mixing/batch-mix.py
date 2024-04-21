@@ -62,8 +62,9 @@ noise_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/
 output_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio'
 
 instruments = ['flute', 'oboe', 'clarinet', 'saxophone', 'cor anglais']
+total_instrument_count = len(instruments)
 
-for instrument in instruments:
+for i, instrument in enumerate(instruments, start=1):
     ith_clean_dir = clean_dir + '/' + instrument
     ith_output_dir = output_dir + '/' + instrument
 
@@ -73,3 +74,6 @@ for instrument in instruments:
 
 
     process_directory(ith_clean_dir, noise_dir, ith_output_dir)
+    print(f"Completed mixing for {instrument}; {i}/{total_instrument_count} completed.")
+
+print("Batch mixing completed.")

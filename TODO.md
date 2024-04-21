@@ -2,9 +2,6 @@
 
 **High Priority**
 
-- Redo batch spectrogram generation
-  - Generate both 128- and 256-frame spectrograms of shape (1024, {frame}, 2).
-
 - Advance the convolutional model
 
 
@@ -13,8 +10,8 @@
 
 - Ensure high bit-depth (float-32) throughout the project
   - Redo noise attenuation
-  - Redo noisy script generation
-  - Redo segmentation
+  - Redo noisy script mixing
+  - Redo segmentation; verify if float-32
   - Redo batch spectrogram generation
     - Generate both 128- and 256-frame spectrograms of shape (1024, {frame}, 2).
 - Add documentation at the top of every file with a description of its function, as well as filling out README documents for each subdirectory.

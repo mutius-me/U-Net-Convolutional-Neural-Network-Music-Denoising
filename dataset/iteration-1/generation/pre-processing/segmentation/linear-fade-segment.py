@@ -1,3 +1,21 @@
+##############################################################################
+# NAME: linear-fade-segment.py
+# DESCRIPTION: This module traverses a soundfile (.wav) directory tree and 
+# generates a new directory tree with a mirrored hierarchy. The new directory
+# replaces every soundfile in the original directory with a subdirectory named
+# after the soundfile. Inside this subdirectory, the soundfile is split into
+# as many 2-second segments as needed to cover its full length. Each segment's 
+# name is  prefixed with its position in the ordered sequence of 2-second
+# segments.
+# 
+# For instance, a 3 second .wav sample entitled "clarinet_A3_forte" would be 
+# replaced in the new directory by a subdirectory "clarinet_A3_forte" in the 
+# same location. The segments would be called '1_clarinet_A3_forte' and 
+# ; 2_clarinet_A3 forte'; both would be exactly 2 seconds long. 
+# Since the original .wav is 3 second long, the last second of the second 
+# segment would be filled by silence.
+###############################################################################
+
 import os
 from pydub import AudioSegment
 import shutil

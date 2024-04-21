@@ -1,3 +1,11 @@
+##############################################################################
+# NAME: attenuate-.py
+# DESCRIPTION: This module takes in a directory, and attenuates all of the 
+# soundfiles in it to a pre-determined dB level. This script is used as part 
+# of the treatment of the noise generated in SuperCollider, which is later
+# mixed in with clean audio to generate the noise-added audio.
+###############################################################################
+
 import os
 import librosa
 import soundfile as sf
