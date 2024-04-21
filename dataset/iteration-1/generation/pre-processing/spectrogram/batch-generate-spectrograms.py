@@ -1,3 +1,10 @@
+##############################################################################
+# NAME: batch-generate-spectrograms.py
+# DESCRIPTION: This module is used to batch generate spectrograms from audio.
+# Currently, this script can only handle audio that is 2 seconds long with a 
+# 44.1k Hertz sample rate. However, it can handle any FFT size and hop length.
+###############################################################################
+
 import librosa
 import numpy as np
 import os
@@ -41,9 +48,10 @@ def process_directory_tree(input_dir, output_dir, fft_size=2048, hop_length=512)
 #* Select target frames before running——this will determine the magnitude of the second dimension of the outputted n-dimensional array
 target_frames = 256
 
-# Example usage
-input_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio-segmented'
-output_directory = f'/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/spectrogram-{target_frames}-frames'
+#* Select target directories before running
+audio_type = "mixed" # mixed or clean
+input_directory = f'/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/{audio_type}/audio-segmented'
+output_directory = f'/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/{audio_type}/spectrogram-{target_frames}-frames'
 
 total_sample_count = SAMPLE_RATE * DURATION
 
