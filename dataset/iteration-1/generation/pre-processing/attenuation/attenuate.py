@@ -32,7 +32,7 @@ def process_directory(source_dir, target_dir, target_rms):
                 adjusted_audio = attenuate_audio_to_target_rms(audio, current_rms_db, target_rms)
                 
                 # Save the adjusted audio
-                sf.write(target_path, adjusted_audio, sr)
+                sf.write(target_path, adjusted_audio, sr, format='WAV', subtype='FLOAT')
                 print(f"Processed and saved: {target_path}")
 
 # Example usage

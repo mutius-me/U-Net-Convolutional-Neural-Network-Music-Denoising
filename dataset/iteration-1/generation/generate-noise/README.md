@@ -10,3 +10,8 @@ A directory for custom scripts to generate custom, randomized ground loop noise.
 
 
 
+
+
+Questions:
+
+- What is the default bit-depth in SuperCollider? What bit-depth am I using?

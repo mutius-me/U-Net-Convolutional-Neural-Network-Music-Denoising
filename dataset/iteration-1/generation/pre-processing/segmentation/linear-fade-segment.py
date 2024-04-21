@@ -2,6 +2,8 @@ import os
 from pydub import AudioSegment
 import shutil
 
+## TODO: verify if AudioSegment is degrading audio quality 
+
 def process_wav_file(source_path, target_dir):
     audio = AudioSegment.from_wav(source_path)
     duration_ms = len(audio)

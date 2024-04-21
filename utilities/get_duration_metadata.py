@@ -1,7 +1,7 @@
 ##############################################################################
-# NAME: get_length_metadata.py
-# DESCRIPTION: A module with various functions to get metadata about length in
-# a dataset, including both MP3 and WAV file processing.
+# NAME: get_duration_metadata.py
+# DESCRIPTION: A module with various functions to get metadata about duration
+# in a dataset, including both MP3 and WAV file processing.
 ###############################################################################
 
 import os
@@ -132,7 +132,8 @@ def process_wav_files(root_dir):
 
 if __name__ == "__main__":
     # Uncomment for WAV files processing
-    root_dir = "saxophone_Gs5_long_forte_major-trill.wav"  # Replace with the actual path
+    # root_dir = "saxophone_Gs5_long_forte_major-trill.wav"  # Replace with the actual path
+    root_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/generation/pre-processing/spectrogram/testing/3-channel/audio/'
     process_wav_files(root_dir)
 
     

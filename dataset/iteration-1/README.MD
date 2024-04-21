@@ -55,3 +55,14 @@ Linked READMEs: (**TODO: fixed relative path links**)
 
 
 
+
+
+
+
+Other Things:
+
+- 44,100 sample rate
+- 2 second audio
+- Using 32bit float to represent each sample
+- 
+

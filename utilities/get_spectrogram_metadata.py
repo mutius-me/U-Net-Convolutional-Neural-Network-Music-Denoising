@@ -1,3 +1,9 @@
+##############################################################################
+# NAME: get_spectrogram_metadata.py
+# DESCRIPTION: A module that prints metadata of spectrograms in an inputted
+# directory.
+###############################################################################
+
 import os
 import numpy as np
 
@@ -29,7 +35,7 @@ def traverse_and_compare_shapes(root_dir):
                     print(f"Shape mismatch {array.shape} found at {file_path}")
 
 # Clean
-root_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/spectrogram'
+root_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/spectrogram-128-frames'
 
 # Mixed
 # root_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/spectrogram'

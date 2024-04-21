@@ -1,12 +1,25 @@
+##############################################################################
+# NAME: batch-mix.py
+# DESCRIPTION: This module is used to combine pre-generated noise with clean
+# audio to generate noisy audio for model training. It mixes in batch, meaning
+# that it traverses the clean audio directory and generates an output 'mixed'
+# directory with a mirrored file structure to the original source directory.
+# Noise samples are picked at random from random points from the noise
+# directory.
+###############################################################################
+
 import os
 import numpy as np
 import librosa
 import soundfile as sf
 import random
 
+## TODO: To make this code more versatile, I need to have a global file for the iteration that stores:
+## TODO:  - Sample rates; bit-depth; 
+
 def mix_audio(clean_file_path, noise_dir, output_dir, mixing_ratio=0.75):
     # Load the clean audio file
-    clean_audio, sr = librosa.load(clean_file_path, sr=None)
+    clean_audio, sr = librosa.load(clean_file_path, sr=None) # defaults to 32float depth
     clean_length = clean_audio.shape[0]
 
     # Randomly select a noise file
@@ -32,7 +45,7 @@ def mix_audio(clean_file_path, noise_dir, output_dir, mixing_ratio=0.75):
     # Save the mixed audio file
     base_clean_filename = os.path.basename(clean_file_path)
     output_file_path = os.path.join(output_dir, f"{os.path.splitext(base_clean_filename)[0]}_mixed{os.path.splitext(base_clean_filename)[1]}")
-    sf.write(output_file_path, mixed_audio, sr)
+    sf.write(output_file_path, mixed_audio, sr, format='WAV', subtype='FLOAT')
 
 def process_directory(clean_dir, noise_dir, output_dir):
     # Traverse the directory tree
@@ -48,10 +61,15 @@ noise_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/
 
 output_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio'
 
-# instruments = ['flute', 'oboe', 'clarinet', 'saxophone', 'cor anglais']
-instruments = ['clarinet', 'saxophone', 'cor anglais']
+instruments = ['flute', 'oboe', 'clarinet', 'saxophone', 'cor anglais']
 
 for instrument in instruments:
     ith_clean_dir = clean_dir + '/' + instrument
     ith_output_dir = output_dir + '/' + instrument
+
+    # Check if the output directory exists, if not, create it
+    if not os.path.exists(ith_output_dir):
+        os.makedirs(ith_output_dir)
+
+
     process_directory(ith_clean_dir, noise_dir, ith_output_dir)

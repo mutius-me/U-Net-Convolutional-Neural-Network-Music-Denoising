@@ -1,3 +1,6 @@
+
+# ! Deprecated in favor of using Librosa instead of PyDub.
+
 import os
 from pydub import AudioSegment
 import shutil
