@@ -49,7 +49,7 @@ def calculate_snr(original, reconstructed):
 # input_file = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio/oboe/oboe_As4_1_piano_normal.wav'  
 input_file = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio-segmented/clarinet/clarinet_A3_1_forte_normal/1_clarinet_A3_1_forte_normal.wav'
 spectrogram_file = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/generation/pre-processing/spectrogram/testing/3-channel/spectrogram/spectrogram.npy'  # Path to save/load the spectrogram
-output_file =  '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/generation/pre-processing/spectrogram/testing/3-channel/audio/reconstructed_audio.wav'
+output_file =  '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/generation/pre-processing/spectrogram/testing/3-channel/audio/reconstructed_audio.wav' # Path to the output of spectrogram conversion
 
 # Main processing
 audio, sr = load_audio(input_file)
@@ -65,14 +65,6 @@ print("Signal-to-Noise Ratio (SNR) between original and reconstruction:", snr, "
 
 
 # ! Debugging
-# def debug_audio_properties(audio, label="Audio"):
-#     """Prints out properties of the audio array to help with debugging."""
-#     print(f"{label}: Length = {len(audio)}, Max = {np.max(audio)}, Min = {np.min(audio)}, Mean = {np.mean(audio)}")
-
-# debug_audio_properties(audio, "Original Audio")
-# debug_audio_properties(audio_reconstructed, "Reconstructed Audio")
-
-
 print("\n~~DEBUGGING~~\n")
 # This part of the code c
 
@@ -80,7 +72,6 @@ def load_audio(file_path):
     """Load a mono audio clip at its original sample rate."""
     audio, sr = librosa.load(file_path, sr=None, mono=True, duration=2, dtype=np.float32)
     return audio, sr
-
 
 reconstructed_audio_2, sr = load_audio(output_file)
 snr = calculate_snr(audio_reconstructed, reconstructed_audio_2)

@@ -134,6 +134,8 @@ if __name__ == "__main__":
     # Uncomment for WAV files processing
     # root_dir = "saxophone_Gs5_long_forte_major-trill.wav"  # Replace with the actual path
     root_dir = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/generation/pre-processing/spectrogram/testing/3-channel/audio/'
+    root_dir = '/Users/Leo/Developer/Local/senior-project/dataset/raw/data/philharmonia'
+
     process_wav_files(root_dir)
 
     

@@ -34,10 +34,57 @@ def traverse_and_compare_shapes(root_dir):
                 elif array.shape != first_shape:
                     print(f"Shape mismatch {array.shape} found at {file_path}")
 
-# Clean
-root_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/spectrogram-128-frames'
+def calculate_array_statistics(root_dir):
+    """Calculate statistics for 3D numpy arrays stored in a directory tree."""
+    stats = {
+        'min': [],
+        'max': [],
+        'mean': [],
+        'median': [],
+        'std': []
+    }
+    
+    # Walk through the directory tree
+    for dirpath, _, filenames in os.walk(root_dir):
+        for filename in filenames:
+            if filename.endswith('.npy'):  # Assuming the files are numpy arrays saved as .npy
+                file_path = os.path.join(dirpath, filename)
+                array = np.load(file_path)
+                
+                # Compute statistics for this array
+                stats['min'].append(np.min(array))
+                stats['max'].append(np.max(array))
+                stats['mean'].append(np.mean(array))
+                stats['median'].append(np.median(array))
+                stats['std'].append(np.std(array))
 
-# Mixed
-# root_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/spectrogram'
+    # Aggregate statistics
+    overall_stats = {
+        'min': np.min(stats['min']),
+        'max': np.max(stats['max']),
+        'global_mean': np.mean(stats['mean']),
+        'global_median': np.median(stats['median']),
+        'global_std': np.mean(stats['std'])
+    }
+    
+    return overall_stats
 
+# Clean input
+# root_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/spectrogram-128-frames'
+
+# Mixed input
+root_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/output/spectrogram-256-frames'
+
+# Output from model
+# root_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/output/spectrogram-128-frames/english-horn/clarinet_A3_1_forte_normal'
+
+
+# Check for shape consistency
 traverse_and_compare_shapes(root_directory)
+
+# Array statistics
+array_stats = calculate_array_statistics(root_directory)
+
+print("\nArray Statistics:")
+for key, value in array_stats.items():
+    print(f"{key.capitalize()}: {value}")

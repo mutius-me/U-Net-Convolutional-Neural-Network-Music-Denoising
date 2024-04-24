@@ -54,8 +54,8 @@ def compare_directories(original_dir, reconstructed_dir):
 
 if __name__ == "__main__":
     # Comparing original with one-off testing reconstruction
-    original_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio-segmented/clarinet/clarinet_A3_1_forte_normal/'
-    reconstructed_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/generation/pre-processing/spectrogram/testing/3-channel/audio'
+    # original_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio-segmented/clarinet/clarinet_A3_1_forte_normal/'
+    # reconstructed_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/generation/pre-processing/spectrogram/testing/3-channel/audio'
 
     # Comparing original with batch'd reconstruction
     # original_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio-segmented/clarinet/clarinet_A3_1_forte_normal/'
@@ -66,9 +66,16 @@ if __name__ == "__main__":
     # original_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/generation/pre-processing/spectrogram/testing/3-channel/audio'
     # reconstructed_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/test-128-frames-reconstructed/clarinet/clarinet_A3_1_forte_normal/'
 
+    # Comparing spectrogram reconstruction of mixed with original segment
+    original_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/OUTPUT-audio-segmented-128-frames'
+    reconstructed_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/mixed/audio-segmented'
+
+    # Same as abov ebut clean
+    original_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/OUTPUT-audio-segmented-128-frames'
+    reconstructed_directory = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio-segmented'
+
+
+
     # Run the comparison
     results = compare_directories(original_directory, reconstructed_directory)
     print("Comparison complete.")
-
-    # debug_audio_properties(original_audio, "Original Audio")
-    # debug_audio_properties(reconstructed_audio, "Reconstructed Audio")

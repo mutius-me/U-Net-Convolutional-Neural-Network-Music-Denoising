@@ -44,7 +44,7 @@ def mix_audio(clean_file_path, noise_dir, output_dir, mixing_ratio=0.75):
 
     # Save the mixed audio file
     base_clean_filename = os.path.basename(clean_file_path)
-    output_file_path = os.path.join(output_dir, f"{os.path.splitext(base_clean_filename)[0]}_mixed{os.path.splitext(base_clean_filename)[1]}")
+    output_file_path = os.path.join(output_dir, f"{os.path.splitext(base_clean_filename)[0]}{os.path.splitext(base_clean_filename)[1]}")
     sf.write(output_file_path, mixed_audio, sr, format='WAV', subtype='FLOAT')
 
 def process_directory(clean_dir, noise_dir, output_dir):
