@@ -1,4 +1,4 @@
-### /Users/Leo/Developer/Local/senior-project/dataset/iteration-1/generation
+### root/dataset/iteration-1/generation
 
 This directory contains Python and SuperCollider 3 scripts to generate and manipulate data. 
 

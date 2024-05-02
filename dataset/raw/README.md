@@ -1,6 +1,6 @@
 # README: raw
 
-This directory contains the original, unedited sample libraries imported for this project (namely, from the **Philharmonia Sound Sample Library**. It also contains noise samples from the 
+This directory contains the original, unedited sample libraries imported for this project (namely, from the **Philharmonia Sound Sample Library**.
 
 
 
