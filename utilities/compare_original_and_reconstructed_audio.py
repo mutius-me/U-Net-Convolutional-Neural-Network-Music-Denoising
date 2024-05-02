@@ -56,8 +56,8 @@ def compare_snr(file_path1, file_path2):
 # file_path2 = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/test-128-frames-reconstructed/clarinet/clarinet_A3_1_forte_normal/1_clarinet_A3_1_forte_normal.wav'
 
 
-file_path1 = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/output/audio-segmented-128-frames/english-horn/clarinet_A3_1_forte_normal/1_clarinet_A3_1_forte_normal_mixed_denoised.wav'
-file_path2 = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio-segmented/clarinet/clarinet_A3_1_forte_normal/1_clarinet_A3_1_forte_normal.wav'
+file_path1 = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/output/audio-segmented-256-frames/flute/flute_A4_1_forte_normal/1_flute_A4_1_forte_normal.wav'
+file_path2 = '/Users/Leo/Developer/Local/senior-project/dataset/iteration-1/data/clean/audio-segmented/flute/flute_A4_1_forte_normal/1_flute_A4_1_forte_normal.wav'
 
 
 compare_snr(file_path1, file_path2)
