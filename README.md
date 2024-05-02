@@ -1,4 +1,4 @@
-# README: U-Net Music Denoising Model
+# README: Leveraging Convolutional Neural Networks to Denoise Music
 
 A Senior Project presented to the faculty of the Department of Computer Science of Yale University In candidacy for the degree of Bachelor of Arts in Computing & the Arts.
 
