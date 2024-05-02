@@ -1,7 +1,5 @@
 # README: Leveraging Convolutional Neural Networks to Denoise Music
 
-A Senior Project presented to the faculty of the Department of Computer Science of Yale University In candidacy for the degree of Bachelor of Arts in Computing & the Arts.
-
 This project leverages the U-Net, a convolutional neural network architecture, to denoise musical data from a custom dataset adapted from the Philharmonia Sound Sample Library.
 
 ## Setup
